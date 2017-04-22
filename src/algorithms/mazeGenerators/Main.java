@@ -2,6 +2,7 @@ package algorithms.mazeGenerators;
 
 /**
  * Created by zaks on 11/04/2017.
+ * pull Test
  */
 public class Main {
     public static void main(String[] args) {
