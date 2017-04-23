@@ -48,8 +48,10 @@ public class Maze {
                     System.out.print("S");
                 else if (j == goalPosition.getX() && i == goalPosition.getY())
                     System.out.print("E");
-                else
-                    System.out.print(build[j][i]);
+                else if (build[j][i] == 1)
+                    System.out.print("█");
+                else if (build[j][i] == 0)
+                    System.out.print("░");
             }
             System.out.println("");
         }

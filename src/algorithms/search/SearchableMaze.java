@@ -25,7 +25,7 @@ public class SearchableMaze implements ISearchable{
         for (int i = 0; i < maze.getColSize(); i++) {
             for (int j = 0; j < maze.getRowSize() ; j++) {
                 //creating a new maze state from the maze positions - with priority
-                newMaze[i][j] = new MazeState(maze, new Position(i,j),destFromStart(i,j), maze.getDataByIndex(i,j));
+                newMaze[i][j] = new MazeState(maze, new Position(i,j), maze.getDataByIndex(i,j));
             }
         }
         this.start = new MazeState(maze, maze.getStartPosition(), 0);
@@ -65,7 +65,7 @@ public class SearchableMaze implements ISearchable{
                 try{
                     int currX = ((Position)m.getCurrState()).getX();
                     int currY = ((Position)m.getCurrState()).getY();
-                    if (!(i==0 && j == 0)){
+                    if (!(i==0 && j == 0) && !(i!=0 && j!=0)){
                         if (this.maze.getBuild()[i+ currX][j+currY]==0 && !this.newMaze[i+ currX][j+currY].isVisited()){
                             possibleSteps.add(newMaze[i+currX][j+currY]);
                         }
@@ -123,6 +123,7 @@ public class SearchableMaze implements ISearchable{
      * @param mX - current maze state - x axis values
      * @param mY - current maze state - y axis values
      * @return priority by position from start point
+     * Cartesian destination calculate from Start state to current
      */
     private double destFromStart(int mX, int mY){
         return Math.sqrt(Math.pow((double)mX-this.maze.getStartPosition().getX(),2)+Math.pow((double)mY-this.maze.getStartPosition().getY(),2));

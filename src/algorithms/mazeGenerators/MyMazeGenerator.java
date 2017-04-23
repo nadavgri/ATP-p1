@@ -33,7 +33,7 @@ public class MyMazeGenerator extends AMazeGenerator {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 try {
-                    if (build[start.getX() + j][start.getY() + i] == 1) {
+                    if (build[start.getX() + j][start.getY() + i] == 1 && !(i!=0 && j!=0)) {
                         int listCount = 0;
                         if (list.isEmpty())
                             list.add(new Position(start.getX() + j, start.getY() + i));

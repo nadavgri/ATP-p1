@@ -53,6 +53,10 @@ public abstract class AState {
         return priority;
     }
 
+    public void setPriority(double priority) {
+        this.priority = priority;
+    }
+
     public String toString(){
         return this.getCurrState().toString();
     }

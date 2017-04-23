@@ -22,15 +22,15 @@ public class BreadthFirstSearch extends ASearchAlgorithm {
     }
 
     /**
-     *
      * @param domain - searchable item to search on
-     * @param start - start of searching
-     * @param goal - end of searching
-     * @param queue - for all states waiting to evaluate
+     * @param start  - start of searching
+     * @param goal   - end of searching
+     * @param queue  - for all states waiting to evaluate
      * @return Solution - arraylist of states from start to goal
      */
     public Solution solve(ISearchable domain, AState start, AState goal, PriorityQueue<AState> queue) {
         int time = 0;
+        int layer = 0;
         numberOfNodesEvaluated = 0;
         ArrayList<AState> solutionPath = new ArrayList<>();
         resetMaze(domain);
@@ -40,6 +40,7 @@ public class BreadthFirstSearch extends ASearchAlgorithm {
         start.setVisited(true);
         domain.setVisitedState(start, true);
         start.setTime(time);
+        start.setPriority(layer);
         time++;
 
         //searching on graph
@@ -54,6 +55,7 @@ public class BreadthFirstSearch extends ASearchAlgorithm {
                 break;
             } else {
                 ArrayList<AState> adj = domain.getAllPossibleStates(curr);
+                layer++;
                 //running on adj of any reached state and adds to queue
                 for (AState state : adj) {
                     if (!domain.getVisited(state) && !queue.contains(state)) {
@@ -61,6 +63,7 @@ public class BreadthFirstSearch extends ASearchAlgorithm {
                         domain.setParentState(state, curr);
                         state.setTime(time);
                         time++;
+                        state.setPriority(layer);
                         queue.add(state);
                     }
                 }

@@ -6,6 +6,7 @@ import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.search.*;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zaks on 11/04/2017.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 public class RunSearchOnMaze {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(10, 5);
         maze.print();
@@ -24,6 +25,8 @@ public class RunSearchOnMaze {
         solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
+
+        TimeUnit.SECONDS.sleep(30);
 
     }
 
