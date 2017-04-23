@@ -16,7 +16,7 @@ public class RunSearchOnMaze {
 
     public static void main(String[] args) throws InterruptedException {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(10, 5);
+        Maze maze = mg.generate(30, 30);
         maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         System.out.println(maze.getStartPosition().toString());
@@ -26,7 +26,7 @@ public class RunSearchOnMaze {
         solveProblem(searchableMaze, new DepthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
 
-        TimeUnit.SECONDS.sleep(30);
+        TimeUnit.SECONDS.sleep(45);
 
     }
 
